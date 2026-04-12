@@ -1,42 +1,40 @@
 .errorContainer {
-    text-align: center;
-    padding: 60px 20px;
+  text-align: center;
+  padding: 60px 20px;
 }
 
 .errorIcon {
-    font-size: 4rem;
-    margin-bottom: 20px;
+  font-size: 4rem;
+  margin-bottom: 20px;
 }
 
 .errorContainer h3 {
-    color: #dc3545;
-    margin-bottom: 10px;
-    font-size: 1.5rem;
+  color: #dc3545;
+  margin-bottom: 10px;
+  font-size: 1.5rem;
 }
 
 .errorContainer p {
-    color: #6c757d;
-    margin-bottom: 20px;
+  color: #6c757d;
+  margin-bottom: 20px;
 }
 
 .retryButton {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    border: none;
-    padding: 10px 30px;
-    font-size: 1rem;
-    border-radius: 25px;
-    cursor: pointer;
-    transition:
-        transform 0.2s,
-        box-shadow 0.2s;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 10px 30px;
+  font-size: 1rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .retryButton:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
 }
 
 .retryButton:active {
-    transform: translateY(0);
+  transform: translateY(0);
 }

@@ -18,7 +18,7 @@
 }
 
 .container {
-  max-width: 1000px;
+  max-width: 900px;
   margin: 0 auto;
   background: white;
   border-radius: 20px;
@@ -56,36 +56,6 @@
   opacity: 0.95;
 }
 
-.controls {
-  padding: 20px 30px 0 30px;
-  display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
-}
-
-.sortButton {
-  padding: 10px 20px;
-  background: #f8f9fa;
-  border: 2px solid #e9ecef;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 0.95rem;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  white-space: nowrap;
-}
-
-.sortButton:hover {
-  background: #e9ecef;
-  transform: translateY(-2px);
-}
-
-.sortButton.active {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  border-color: #667eea;
-}
-
 .appFooter {
   background: #f8f9fa;
   padding: 15px;
@@ -93,15 +63,4 @@
   color: #6c757d;
   font-size: 0.85rem;
   border-top: 1px solid #e9ecef;
-}
-
-@media (max-width: 768px) {
-  .controls {
-    flex-direction: column;
-    padding: 20px 20px 0 20px;
-  }
-  
-  .sortButton {
-    width: 100%;
-  }
 }
