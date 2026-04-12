@@ -2,6 +2,28 @@
   padding: 30px;
 }
 
+.emptyState {
+  text-align: center;
+  padding: 60px 20px;
+  color: #6c757d;
+}
+
+.emptyIcon {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  opacity: 0.5;
+}
+
+.emptyState p {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.emptySubtext {
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
 .stats {
   display: flex;
   justify-content: space-around;
@@ -10,6 +32,7 @@
   padding: 15px;
   background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
   border-radius: 12px;
+  flex-wrap: wrap;
 }
 
 .statItem {
@@ -89,9 +112,45 @@
   color: #6c757d;
 }
 
+.editInput {
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 1rem;
+  border: 2px solid #667eea;
+  border-radius: 8px;
+  outline: none;
+  font-family: inherit;
+}
+
 .todoId {
   font-size: 0.75rem;
   color: #6c757d;
+}
+
+.todoActions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.editButton, .deleteButton {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.editButton:hover {
+  background: #e9ecef;
+  transform: scale(1.1);
+}
+
+.deleteButton:hover {
+  background: #f8d7da;
+  transform: scale(1.1);
 }
 
 .todoStatus {
@@ -104,6 +163,7 @@
   border-radius: 20px;
   font-size: 0.8rem;
   font-weight: 500;
+  white-space: nowrap;
 }
 
 .statusDone {
@@ -135,8 +195,12 @@
     gap: 10px;
   }
   
+  .todoActions {
+    order: 2;
+  }
+  
   .todoStatus {
-    width: 100%;
-    text-align: right;
+    order: 1;
+    flex: 1;
   }
 }
