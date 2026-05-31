@@ -1,27 +1,29 @@
-import React from 'react';
-import styles from './SearchBar.module.css';
+import React from "react";
+import { useTodos } from "../context/TodoContext";
+import styles from "./SearchBar.module.css";
 
-const SearchBar = ({ searchQuery, setSearchQuery }) => {
-  return (
-    <div className={styles.searchContainer}>
-      <div className={styles.searchIcon}>🔍</div>
-      <input
-        type="text"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-        placeholder="Поиск по задачам..."
-        className={styles.searchInput}
-      />
-      {searchQuery && (
-        <button 
-          onClick={() => setSearchQuery('')}
-          className={styles.clearButton}
-        >
-          ✕
-        </button>
-      )}
-    </div>
-  );
+const SearchBar = () => {
+    const { searchQuery, setSearchQuery } = useTodos();
+
+    return (
+        <div className={styles.search}>
+            <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Поиск по названию..."
+                className={styles.input}
+            />
+            {searchQuery && (
+                <button
+                    onClick={() => setSearchQuery("")}
+                    className={styles.clear}
+                >
+                    ✕
+                </button>
+            )}
+        </div>
+    );
 };
 
 export default SearchBar;
