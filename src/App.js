@@ -1,20 +1,24 @@
-import React from "react";
-import TodoList from "./components/TodoList";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchTodos } from "./actions/todoActions";
+import { toggleSort } from "./actions/filterActions";
 import TodoForm from "./components/TodoForm";
+import TodoList from "./components/TodoList";
 import SearchBar from "./components/SearchBar";
 import LoadingSpinner from "./components/LoadingSpinner";
 import ErrorMessage from "./components/ErrorMessage";
-import { useTodos } from "./context/TodoContext";
 import styles from "./App.module.css";
 
 function App() {
-    const {
-        loading,
-        error,
-        refetch,
-        sortAlphabetically,
-        setSortAlphabetically,
-    } = useTodos();
+    const dispatch = useDispatch();
+    const { loading, error } = useSelector((state) => state.todos);
+    const sortAlphabetically = useSelector(
+        (state) => state.filters.sortAlphabetically,
+    );
+
+    useEffect(() => {
+        dispatch(fetchTodos());
+    }, [dispatch]);
 
     return (
         <div className={styles.App}>
@@ -22,7 +26,7 @@ function App() {
                 <header className={styles.header}>
                     <h1>📝 Список дел</h1>
                     <p className={styles.subtitle}>
-                        React Context + JSON Server
+                        Redux + Thunk + JSON Server
                     </p>
                 </header>
 
@@ -30,7 +34,7 @@ function App() {
                     <SearchBar />
                     <button
                         className={`${styles.sortButton} ${sortAlphabetically ? styles.active : ""}`}
-                        onClick={() => setSortAlphabetically((prev) => !prev)}
+                        onClick={() => dispatch(toggleSort())}
                     >
                         {sortAlphabetically
                             ? "📖 Отменить сортировку"
@@ -41,7 +45,12 @@ function App() {
                 <TodoForm />
 
                 {loading && <LoadingSpinner />}
-                {error && <ErrorMessage message={error} onRetry={refetch} />}
+                {error && (
+                    <ErrorMessage
+                        message={error}
+                        onRetry={() => dispatch(fetchTodos())}
+                    />
+                )}
 
                 {!loading && !error && <TodoList />}
 

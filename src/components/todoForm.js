@@ -1,19 +1,20 @@
 import React, { useState } from "react";
-import { useTodos } from "../context/TodoContext";
+import { useDispatch } from "react-redux";
+import { addTodo } from "../actions/todoActions";
 import styles from "./TodoForm.module.css";
 
 const TodoForm = () => {
     const [title, setTitle] = useState("");
     const [submitting, setSubmitting] = useState(false);
-    const { addTodo } = useTodos();
+    const dispatch = useDispatch();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!title.trim()) return;
         setSubmitting(true);
-        const success = await addTodo(title);
+        await dispatch(addTodo(title));
         setSubmitting(false);
-        if (success) setTitle("");
+        setTitle("");
     };
 
     return (

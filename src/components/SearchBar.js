@@ -1,22 +1,24 @@
 import React from "react";
-import { useTodos } from "../context/TodoContext";
+import { useDispatch, useSelector } from "react-redux";
+import { setSearchQuery } from "../actions/filterActions";
 import styles from "./SearchBar.module.css";
 
 const SearchBar = () => {
-    const { searchQuery, setSearchQuery } = useTodos();
+    const dispatch = useDispatch();
+    const searchQuery = useSelector((state) => state.filters.searchQuery);
 
     return (
         <div className={styles.search}>
             <input
                 type="text"
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Поиск по названию..."
+                onChange={(e) => dispatch(setSearchQuery(e.target.value))}
+                placeholder="Поиск по задачам..."
                 className={styles.input}
             />
             {searchQuery && (
                 <button
-                    onClick={() => setSearchQuery("")}
+                    onClick={() => dispatch(setSearchQuery(""))}
                     className={styles.clear}
                 >
                     ✕
